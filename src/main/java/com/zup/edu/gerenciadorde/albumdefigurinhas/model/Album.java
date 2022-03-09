@@ -25,7 +25,7 @@ public class Album {
     @Min(10)
     private Integer numeroPaginas;
 
-    @OneToMany(mappedBy = "album",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "album")
     private List<Figurinha> figurinhas= new ArrayList<>();
 
 
@@ -43,7 +43,4 @@ public class Album {
 
     }
 
-    public void associarTodas(List<Figurinha> figurinhas) {
-        this.figurinhas.addAll(figurinhas);
-    }
 }
