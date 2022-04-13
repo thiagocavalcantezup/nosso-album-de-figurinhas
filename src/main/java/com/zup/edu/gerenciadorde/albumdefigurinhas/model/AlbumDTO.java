@@ -1,6 +1,6 @@
 package com.zup.edu.gerenciadorde.albumdefigurinhas.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -24,13 +24,13 @@ public class AlbumDTO {
     private Integer paginas;
 
     @NotEmpty
-    private List<FigurinhaDTO> figurinhas;
+    private Set<FigurinhaDTO> figurinhas;
 
     public AlbumDTO() {}
 
     public AlbumDTO(@NotBlank String titulo, @NotBlank String descricao,
                     @NotNull @Positive @Max(100) @Min(10) Integer paginas,
-                    @NotEmpty List<FigurinhaDTO> figurinhas) {
+                    @NotEmpty Set<FigurinhaDTO> figurinhas) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.paginas = paginas;
@@ -49,7 +49,7 @@ public class AlbumDTO {
         return paginas;
     }
 
-    public List<FigurinhaDTO> getFigurinhas() {
+    public Set<FigurinhaDTO> getFigurinhas() {
         return figurinhas;
     }
 

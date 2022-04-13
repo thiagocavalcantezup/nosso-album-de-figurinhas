@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zup.edu.gerenciadorde.albumdefigurinhas.model.Album;
@@ -42,7 +43,7 @@ class AlbumControllerTest {
 
         FigurinhaDTO figurinhaDTO = new FigurinhaDTO(5, "Guilherme Arana do Atletico-MG");
 
-        AlbumDTO albumDTO = new AlbumDTO("Brasileirao 2021", descricao, 87, List.of(figurinhaDTO));
+        AlbumDTO albumDTO = new AlbumDTO("Brasileirao 2021", descricao, 87, Set.of(figurinhaDTO));
 
         String payload = objectMapper.writeValueAsString(albumDTO);
 

@@ -1,8 +1,9 @@
 package com.zup.edu.gerenciadorde.albumdefigurinhas.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +33,8 @@ public class Album {
     @Min(10)
     private Integer paginas;
 
-    @OneToMany(mappedBy = "album")
-    private List<Figurinha> figurinhas = new ArrayList<>();
+    @OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
+    private Set<Figurinha> figurinhas = new HashSet<>();
 
     public Album(String titulo, String descricao, Integer paginas) {
         this.titulo = titulo;
