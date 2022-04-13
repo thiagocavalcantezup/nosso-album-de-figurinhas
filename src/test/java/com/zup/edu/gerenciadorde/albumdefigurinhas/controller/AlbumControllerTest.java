@@ -47,7 +47,7 @@ class AlbumControllerTest {
 
         String payload = objectMapper.writeValueAsString(albumDTO);
 
-        MockHttpServletRequestBuilder request = post("/albums")
+        MockHttpServletRequestBuilder request = post("/albuns")
                                                                .contentType(
                                                                    MediaType.APPLICATION_JSON
                                                                )

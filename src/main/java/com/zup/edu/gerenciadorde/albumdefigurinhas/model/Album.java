@@ -33,7 +33,8 @@ public class Album {
     @Min(10)
     private Integer paginas;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "album", cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Figurinha> figurinhas = new HashSet<>();
 
     public Album(String titulo, String descricao, Integer paginas) {
@@ -47,5 +48,18 @@ public class Album {
      */
     @Deprecated
     public Album() {}
+
+    public void adicionar(Figurinha figurinha) {
+        figurinha.setAlbum(this);
+        this.figurinhas.add(figurinha);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Set<Figurinha> getFigurinhas() {
+        return figurinhas;
+    }
 
 }

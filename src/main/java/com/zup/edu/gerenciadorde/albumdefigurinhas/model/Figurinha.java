@@ -23,10 +23,9 @@ public class Figurinha {
     @ManyToOne(optional = false)
     private Album album;
 
-    public Figurinha(Integer pagina, String descricao, Album album) {
+    public Figurinha(Integer pagina, String descricao) {
         this.pagina = pagina;
         this.descricao = descricao;
-        this.album = album;
     }
 
     /**
@@ -34,5 +33,13 @@ public class Figurinha {
      */
     @Deprecated
     public Figurinha() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
 }

@@ -37,6 +37,14 @@ public class AlbumDTO {
         this.figurinhas = figurinhas;
     }
 
+    public Album toModel() {
+        Album album = new Album(titulo, descricao, paginas);
+
+        figurinhas.stream().map(FigurinhaDTO::toModel).forEach(album::adicionar);
+
+        return album;
+    }
+
     public String getTitulo() {
         return titulo;
     }
