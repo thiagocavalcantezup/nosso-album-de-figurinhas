@@ -8,11 +8,15 @@ import com.zup.edu.gerenciadorde.albumdefigurinhas.model.Album;
 import com.zup.edu.gerenciadorde.albumdefigurinhas.model.AlbumDTO;
 import com.zup.edu.gerenciadorde.albumdefigurinhas.repository.AlbumRepository;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -35,6 +39,21 @@ public class AlbumController {
         URI location = ucb.path(BASE_URI + "/{id}").buildAndExpand(album.getId()).toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        Album album = albumRepository.findById(id)
+                                     .orElseThrow(
+                                         () -> new ResponseStatusException(
+                                             HttpStatus.NOT_FOUND,
+                                             "Não existe um álbum com o id fornecido."
+                                         )
+                                     );
+
+        albumRepository.delete(album);
+
+        return ResponseEntity.noContent().build();
     }
 
 }
