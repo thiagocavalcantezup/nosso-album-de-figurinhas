@@ -1,15 +1,21 @@
 package com.zup.edu.gerenciadorde.albumdefigurinhas.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Figurinha {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Integer paginaQueSeEncontra;
+    private Integer pagina;
 
     @Column(nullable = false)
     private String descricao;
@@ -17,16 +23,16 @@ public class Figurinha {
     @ManyToOne(optional = false)
     private Album album;
 
-    public Figurinha(Integer paginaQueSeEncontra, String descricao, Album album) {
-        this.paginaQueSeEncontra = paginaQueSeEncontra;
+    public Figurinha(Integer pagina, String descricao, Album album) {
+        this.pagina = pagina;
         this.descricao = descricao;
         this.album = album;
     }
 
     /**
-     * @deprecated construtor apenas para uso do hibernate
+     * @deprecated Construtor de uso exclusivo do Hibernate
      */
     @Deprecated
-    public Figurinha() {
-    }
+    public Figurinha() {}
+
 }
