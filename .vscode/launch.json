@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-AlbumDeFigurinhasApplication<album-de-figurinhas>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.zup.edu.gerenciadorde.albumdefigurinhas.AlbumDeFigurinhasApplication",
+      "projectName": "album-de-figurinhas",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
